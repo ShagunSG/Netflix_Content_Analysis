@@ -65,7 +65,7 @@ fig3 = px.pie(
     names='Country Presence', 
     values='Count',
     title="Distribution of Content made in India and not made in India",
-    color_discrete_sequence=px.colors.qualitative.Vivid
+    color_discrete_sequence=px.colors.qualitative.Set2
 )
 
 st.plotly_chart(fig3)
