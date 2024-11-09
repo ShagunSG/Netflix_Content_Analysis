@@ -22,7 +22,6 @@ filtered_df = df[(df['type'].isin(selected_content_types)) & (df['year_added'].i
 # Group by year and content type, then count entries
 content_count = filtered_df.groupby(['year_added', 'type']).size().reset_index(name="Count")
 
-# Bar chart with separate counts for each content type in each selected year
 fig1 = px.bar(
     content_count, 
     x='year_added', 
@@ -36,14 +35,12 @@ fig1 = px.bar(
 
 st.plotly_chart(fig1)
 
-# Section for "India" filter
 st.subheader("Content made in India (including co-productions)")
 
 # Filter for rows that contain 'India' in the 'country' column
 india_filtered_df = filtered_df[filtered_df['country'].str.contains('India', na=False)]
 india_content_count = india_filtered_df.groupby(['year_added', 'type']).size().reset_index(name="Count")
 
-# Bar chart for India-specific content counts by year and type
 fig2 = px.bar(
     india_content_count, 
     x='year_added', 
@@ -68,7 +65,7 @@ fig3 = px.pie(
     names='Country Presence', 
     values='Count',
     title="Distribution of Content made in India and not made in India",
-    color_discrete_sequence=px.colors.sequential.Teal
+    color_discrete_sequence=px.colors.qualitative.Vivid
 )
 
 st.plotly_chart(fig3)
